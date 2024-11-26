@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="author"
+      content="Tiffany Voorhees" />
+    <meta
+      name="description"
+      content="" />
+
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="styles/styles.css" />
+
+    <script
+      src="scripts/scripts.js"
+      defer></script>
+  </head>
+  <body>
+    <h1 id="countdown"></h1>
+    <button id="startButton">Start</button>
+
+    <script>
+      const countdown = document.querySelector('#countdown');
+      let timeLeft = 10;
+      const startButton = document.querySelector('#startButton');
+
+      startButton.addEventListener('click', startCountdown);
+
+      function startCountdown() {
+        // repeat with the interval of 1 second
+        setInterval(setHeading, 1000);
+      }
+
+      function setHeading() {
+        if (timeLeft >= 0) {
+          countdown.textContent = timeLeft;
+          timeLeft--;
+        } else {
+          // Stop the countdown message
+        }
+      }
+    </script>
+  </body>
+</html>
