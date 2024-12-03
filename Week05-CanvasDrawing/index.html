@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Canvas tutorial</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="tutorial" width="150" height="150"></canvas>
+    <script>
+      let happyFace = true;
+      const canvas = document.getElementById('tutorial');
+      function draw() {
+        if (canvas.getContext) {
+          const ctx = canvas.getContext('2d');
+
+          // Clear exising face
+          ctx.clearRect(0, 0, 150, 150);
+          ctx.beginPath();
+          ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+          if (happyFace) {
+            ctx.moveTo(110, 75);
+            ctx.arc(75, 75, 35, 0, Math.PI, false); // Mouth (clockwise)
+            happyFace = false;
+          } else {
+            ctx.moveTo(105, 105);
+            ctx.arc(75, 105, 30, 0, Math.PI, true); // Mouth (counter-clockwise)
+            happyFace = true;
+          }
+          ctx.moveTo(65, 65);
+          ctx.arc(60, 65, 5, 0, Math.PI * 2, true); // Left eye
+          ctx.moveTo(95, 65);
+          ctx.arc(90, 65, 5, 0, Math.PI * 2, true); // Right eye
+          ctx.stroke();
+        }
+      }
+
+      window.addEventListener('load', draw);
+      canvas.addEventListener('click', draw);
+    </script>
+  </body>
+</html>
